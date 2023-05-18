@@ -1,0 +1,19 @@
+class Solution {
+public:
+    vector<int> shuffle(vector<int>& nums, int n) {
+        int j = nums.size();
+        vector<int> ans(j,0);
+        for(int i=0; i<(nums.size()); i++){
+            if(i%2==0){
+                ans[i] = nums[i/2];
+            }
+            else{
+                ans[i] = nums[(j/2) + (i/2)];
+            }
+        }
+        for(int i=0; i<(nums.size()); i++){
+            nums[i] = ans[i];
+        }
+        return nums;
+    }
+};
