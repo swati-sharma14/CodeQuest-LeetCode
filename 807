@@ -1,0 +1,12 @@
+class Solution {
+public:
+    int maxIncreaseKeepingSkyline(vector<vector<int>>& grid) {
+        vector<vector<int>> ans();
+        for(int i=0; i<grid.size(); i++){
+            int a = *max_element(grid[i].begin(), grid[i].end());
+            for(int j=0; j<grid.size();j++){
+                ans[i].push_back(a);
+            }
+        }
+    }
+};
