@@ -82,9 +82,6 @@ Explore the branches to find solutions for the following:
 
 ## Contributions
 
-Contributions to the LeetCode Solutions Repository are highly encouraged! If you have additional solutions, optimizations, or new problems to add, please create a pull request. Let's collaborate and build a comprehensive resource for LeetCode problem-solving!
-
-## License
-
-The LeetCode Solutions Repository and its contents are released under the [MIT License](https://opensource.org/licenses/MIT).
+Contributions to the LeetCode Solutions Repository are highly encouraged! If you have additional solutions, optimizations, or new problems to add, please create a pull request. <br>
+Let's collaborate and build a comprehensive resource for LeetCode problem-solving!
 
