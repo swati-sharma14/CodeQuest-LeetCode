@@ -1,0 +1,13 @@
+class Solution {
+public:
+    vector<int> decode(vector<int>& encoded, int first) {
+        vector<int> ans((encoded.size()+1),0);
+        ans[0] = first;
+        int a = ans[0];
+        for(int i=1; i<=(encoded.size());i++){
+            ans[i] = a^(encoded[i-1]);
+            a = ans[i];
+        }
+        return ans;
+    }
+};
