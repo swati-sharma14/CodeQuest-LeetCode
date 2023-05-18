@@ -1,6 +1,7 @@
 # 🧩 LeetCode Solutions Repository
 
-Welcome to the LeetCode Solutions Repository! Here, you'll find a collection of solutions to LeetCode coding problems categorized by data structure and level of difficulty. 💻🔥
+Welcome to the LeetCode Solutions Repository! <br>
+Here, you'll find a collection of solutions to LeetCode coding problems categorized by data structure and level of difficulty. 💻🔥
 
 ## Structure
 
