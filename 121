@@ -1,0 +1,24 @@
+class Solution {
+public:
+    int maxProfit(vector<int>& prices) {
+        int j = prices.size() ;
+        if(j==1){
+            return 0;
+        }
+        vector<int> arr(j,0);
+        int max = prices[j-1];
+        for(int i=j-1 ;i>=0 ;i--){
+            if(prices[i] > max){
+                max = prices[i];
+            }
+            arr[i]=max;
+        }
+        max = 0;
+        for(int i=0; i<j; i++){
+            if(arr[i] - prices[i] > max){
+                max = arr[i] - prices[i];
+            }
+        }
+        return max;
+    }
+};
