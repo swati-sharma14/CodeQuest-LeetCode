@@ -1,0 +1,36 @@
+class Solution {
+public:
+    int search(vector<int>& nums, int target) {
+        int low = 0, high = nums.size()-1;
+        while(low<=high){
+            int mid = (high+low)/2;
+            if(nums[mid]==target){
+                return mid;
+            }
+            else if(nums[mid]>target){
+                high = mid-1;
+            }
+            else{
+                low = mid + 1;
+            }
+        }
+        return -1;
+    }
+    
+    vector<int> intersection(vector<int>& nums1, vector<int>& nums2) {
+        sort(nums2.begin(),nums2.end());
+        unordered_map <int,int> map;
+        for(int i=0; i<nums1.size(); i++){
+            int a = nums1[i];
+            int j = search(nums2,a);
+            if(j!=-1){
+                map[a]=1;
+            }
+        }
+        vector<int> ans;
+        for(auto& x:map){
+            ans.push_back(x.first);
+        }
+        return ans;
+    }
+};
