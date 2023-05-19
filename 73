@@ -1,0 +1,29 @@
+class Solution {
+public:
+    void setZeroes(vector<vector<int>>& matrix) {
+        vector<vector<int>> a;
+        for(int i=0; i<matrix.size(); i++){
+            for(int j=0; j<matrix[i].size(); j++){
+                if(matrix[i][j] == 0){
+                    vector<int> b;
+                    b.push_back(i);
+                    b.push_back(j);
+                    a.push_back(b);
+                }
+            }
+        }
+        for(int i=0; i<a.size(); i++){
+            cout << a[i][0] << " " << a[i][1] << endl;
+        }
+        vector<int> zero(matrix[0].size(),0);
+        for(int i=0; i<a.size(); i++){
+            matrix[a[i][0]] = zero;
+
+            int bx = a[i][1];
+            for(int j=0; j<matrix.size(); j++){
+                matrix[j][a[i][1]] = 0;
+            }
+            
+        }
+    }
+};
