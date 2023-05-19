@@ -1,0 +1,22 @@
+class Solution {
+public:
+    int hammingDistance(int x, int y) {
+        int c = max(x,y);
+        int d = min(x,y),e=d;
+        vector<int> nums;
+        while(c!=0){
+            nums.push_back(c%2);
+            c/=2;
+        }
+        int ans = 0;
+        vector<int> second_nums = nums;
+        for(int i=0; i<nums.size(); i++){
+            e = d%2;
+            if(e!=nums[i]){
+                ans++;
+            }
+            d/=2;
+        }
+        return ans;
+    }
+};
