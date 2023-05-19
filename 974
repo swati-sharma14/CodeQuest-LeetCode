@@ -1,0 +1,26 @@
+class Solution {
+public:
+    int subarraysDivByK(vector<int>& nums, int k) {
+        map<int,int> map;
+        int sum=0;
+        for(int i=0; i<nums.size(); i++){
+            sum+=nums[i];
+            int a = sum%k;
+            if(a<0){
+                a+=k;
+            }
+            map[a]+=1;
+        }
+        int ans = 0;
+        for(auto &x:map){
+            int a = x.second;
+            if(x.second>1){
+                ans+=((a)*(a-1))/2;
+            }
+            if(x.first==0){
+                ans+=x.second;
+            }
+        }
+        return ans;
+    }
+};
