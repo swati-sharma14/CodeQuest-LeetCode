@@ -1,0 +1,19 @@
+class Solution {
+public:
+    int pivotInteger(int n) {
+        if(n==0 || n==1){
+            return n;
+        }
+        vector<int> nums(n,0);
+        nums[0] = 1;
+        for(int i=1; i<n; i++){
+            nums[i] = i+1 + nums[i-1];
+        }
+        for(int i=1; i<n; i++){
+            if(nums[i] == nums[n-1] - nums[i-1]){
+                return i+1;
+            }
+        }
+        return -1;
+    }
+};
