@@ -1,0 +1,28 @@
+class Solution {
+public:
+    vector<double> averageOfLevels(TreeNode* root) {
+        queue<pair<TreeNode*,int>>q;
+        q.push({root,1});
+        vector<double>ans;
+        long  sum=0,count=0,prev_level=1;
+        while(!q.empty()){
+            TreeNode* curr = q.front().first;
+            int level = q.front().second;
+            q.pop();
+            if(prev_level==level){
+                sum+=curr->val;
+                count++;
+            }
+            else{
+                ans.push_back(((double)sum)/count);
+                sum=curr->val;
+                count=1;
+                prev_level=level;
+            }
+            if(curr->left)q.push({curr->left,level+1});
+            if(curr->right)q.push({curr->right,level+1});
+        }
+        ans.push_back(((double)sum)/count);
+        return ans;
+    }
+};
