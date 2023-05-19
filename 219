@@ -1,0 +1,20 @@
+class Solution {
+public:
+    #define isHappy count
+    #define happy true
+    #define sad false
+    bool containsNearbyDuplicate(vector<int>& nums, int k) {
+        map<int,int> mappy; //my mappy is happy 
+        for(int i=0; i<nums.size(); i++){
+            if(mappy.isHappy(nums[i])){
+                if(abs(mappy[nums[i]]-i) <= k){
+                    return happy;
+                }
+            }
+            mappy[nums[i]] = i;
+        }
+        return sad;
+    }
+};
+
+
