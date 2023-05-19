@@ -1,0 +1,17 @@
+class Solution {
+public:
+    int findComplement(int num) {
+        int count=0,n=num;
+        while(num != 0)
+        {
+            num=num>>1;
+            count++;
+        }
+        unsigned mask = 0;
+        mask = ~mask;
+        mask = mask<<count;
+
+        int ans = n|mask;
+        return ~ans;
+    }
+};
