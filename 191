@@ -1,0 +1,13 @@
+class Solution {
+public:
+    int hammingWeight(uint32_t n) {
+        int a = 0;
+        std::string str1 = std::to_string(n);
+        for(int i=0; i<str1.length(); i++){
+            if(str1[i]=='1'){
+                a++;
+            }
+        }
+        return a;
+    }
+};
