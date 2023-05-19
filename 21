@@ -1,0 +1,95 @@
+/**
+ * Definition for singly-linked list.
+ * struct ListNode {
+ *     int val;
+ *     ListNode *next;
+ *     ListNode() : val(0), next(nullptr) {}
+ *     ListNode(int x) : val(x), next(nullptr) {}
+ *     ListNode(int x, ListNode *next) : val(x), next(next) {}
+ * };
+ */
+class Solution {
+public:
+    ListNode* mergeTwoLists(ListNode* list1, ListNode* list2) {
+        if(list1==NULL){
+            return list2;
+        }
+        if(list2==NULL){
+            return list1;
+        }
+        int a = list1->val;
+        int b = list2->val;
+        ListNode* ans;
+        if(a>b){
+            ans = new ListNode(b);
+            if(list2->next!=NULL){
+                list2 = list2->next;
+            }
+            else{
+                ans->next = list1;
+                list1 = ans;
+                return ans;
+            }
+        }
+        else{
+            ans = new ListNode(a);
+            if(list1->next!=NULL){
+                list1 = list1->next;
+            }
+            else{
+                ans->next = list2;
+                list2 = ans;
+                return ans;
+            }
+        }
+
+        while(list1!=NULL && list2!=NULL){
+            ListNode* ptr;
+            a = list1->val;
+            b = list2->val;
+            if(a>b){
+                ptr = new ListNode(list2->val);
+                list2 = list2->next;
+            }
+            else{
+                ptr = new ListNode(list1->val);
+                list1 = list1->next;
+            }
+            ptr->next = ans;
+            ans = ptr;
+        }
+        if(list1==NULL){
+            while(list2!=NULL){
+                ListNode* ptr;
+                ptr = new ListNode(list2->val);
+                ptr->next = ans;
+                ans = ptr;
+                list2 = list2->next;
+            }
+        }
+        else if(list2==NULL){
+            while(list1!=NULL){
+                ListNode* ptr;
+                ptr = new ListNode(list1->val);
+                ptr->next = ans;
+                ans = ptr;
+                list1 = list1->next;
+            }
+        }
+        vector<int> val;
+
+        ListNode* ptrs = ans;
+        while(ptrs!=NULL){
+            val.push_back(ptrs->val);
+            ptrs = ptrs->next;
+        }
+
+        ListNode* head2 = new ListNode(val[0]);
+        for(int i=1; i<val.size(); i++){
+            ListNode* ptr = new ListNode(val[i]);
+            ptr->next = head2;
+            head2 = ptr;
+        }
+        return head2;
+    }
+};
