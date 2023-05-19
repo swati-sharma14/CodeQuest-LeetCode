@@ -1,0 +1,37 @@
+/**
+ * Definition for a binary tree node.
+ * struct TreeNode {
+ *     int val;
+ *     TreeNode *left;
+ *     TreeNode *right;
+ *     TreeNode() : val(0), left(nullptr), right(nullptr) {}
+ *     TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
+ *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
+ * };
+ */
+class Solution {
+public:
+    vector<int> nodes; 
+
+    void InorderRecursive(TreeNode *root){
+        if (root == NULL){
+            return;
+        }
+        nodes.push_back(root->val);
+        InorderRecursive(root->left); //visit left sub-tree
+        InorderRecursive(root->right); //visit right sub-tree
+    }
+
+    int getMinimumDifference(TreeNode* root) {   
+        InorderRecursive(root);
+        sort(nodes.begin(),nodes.end());
+        int max = 100001;
+        for(int i=0; i<nodes.size()-1; i++){
+            int count = nodes[i+1] - nodes[i];
+            if(count<max){
+                max = count;
+            }
+        }
+        return max;
+    }
+};
