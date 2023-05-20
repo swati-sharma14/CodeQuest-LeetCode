@@ -1,0 +1,25 @@
+class Solution {
+public:
+    int maxDepth(string s) {
+        stack<char> stack;
+        vector<char> para;
+        for(int i=0; i<s.length(); i++){
+            if(s[i] == '(' || s[i] == ')'){
+                para.push_back(s[i]);
+            }
+        }
+        int maxs = 0;
+        int count = 0;
+        for(int i=0; i<para.size(); i++){
+            if(para[i] == '('){
+                count++;
+                maxs = max(maxs,count); 
+            }
+            else{
+                count--;
+            }
+        }
+        return maxs;
+    }
+};
+
