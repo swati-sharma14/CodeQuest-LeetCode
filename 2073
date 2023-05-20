@@ -1,0 +1,31 @@
+class Solution {
+public:
+    int timeRequiredToBuy(vector<int>& tickets, int k) {
+        if(tickets[k] == 1){
+            return k+1;
+        }
+        int find = 200;
+        tickets[k] += 200;
+        int time = 0;
+
+        queue<int> peeps;
+        for(int i=0; i<tickets.size(); i++){
+            peeps.push(tickets[i]);
+        }
+
+        while(find<tickets[k]){
+
+            int a = peeps.front();
+
+            if(a>=200){
+                find++;
+            }
+            if(a!=1){
+                peeps.push(a-1);
+            }
+            peeps.pop();
+            time++;
+        }
+        return time;
+    }
+};
