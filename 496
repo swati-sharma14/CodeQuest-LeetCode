@@ -1,0 +1,22 @@
+class Solution {
+public:
+    vector<int> nextGreaterElement(vector<int>& nums1, vector<int>& nums2) {
+        vector<int> ans(nums1.size(),-1);
+        for(int i=0; i<nums1.size(); i++){
+            stack<int> stack;
+            int a = nums1[i];
+            int j = nums2.size()-1;
+            while(nums2[j]!=a){
+                stack.push(j);
+                j--;
+            }
+            while(!stack.empty() && nums2[stack.top()]<=a){
+                stack.pop();
+            }
+            if(!stack.empty()){
+                ans[i] = nums2[stack.top()];
+            }
+        }
+        return ans;
+    }
+}; 
