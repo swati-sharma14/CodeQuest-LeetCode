@@ -1,0 +1,43 @@
+class Solution {
+public:
+    int search(vector<int>& nums, int target) {
+        int low = 0, high = nums.size()-1;
+        while(low<=high){
+            int mid = (high+low)/2;
+            if(nums[mid]==target){
+                return mid;
+            }
+            else if(nums[mid]>target){
+                high = mid-1;
+            }
+            else{
+                low = mid + 1;
+            }
+        }
+        return -1;
+    }
+
+    vector<int> fairCandySwap(vector<int>& a, vector<int>& b) {
+        int alicet =0, bobt = 0;
+        for(int i=0; i<a.size(); i++){
+            alicet+=a[i];
+        }
+        for(int i=0; i<b.size(); i++){
+            bobt+=b[i];
+        }
+        cout << alicet << " " << bobt << endl;
+        sort(a.begin(),a.end());
+        sort(b.begin(),b.end());
+        for(int i=0; i<a.size(); i++){
+            int c = alicet - a[i]; 
+            int d = bobt  + a[i]; 
+            int e = (d-c)/2;
+            cout << e << endl;
+            int j = search(b,e);
+            if(j!=-1){
+                return {a[i],b[j]};
+            }
+        }
+        return {1};
+    }
+};
