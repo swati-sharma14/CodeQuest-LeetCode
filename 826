@@ -1,0 +1,28 @@
+class Solution {
+public:
+    int maxProfitAssignment(vector<int>& difficulty, vector<int>& profit, vector<int>& worker) {
+        vector<pair<int,int>> nums(profit.size());
+        for(int i=0; i<profit.size(); i++){
+            nums[i].first = profit[i];
+            nums[i].second = difficulty[i];
+        }
+        sort(nums.begin(), nums.end());
+        sort(worker.begin(), worker.end());
+        int i = nums.size()-1;
+        int sum = 0;
+        int j=worker.size()-1;
+        while(i>=0 && j>=0){
+            while(i>=0 && j>=0 && nums[i].second > worker[j]){
+                cout << nums[i].second << " " << worker[j] << endl;
+                i--;
+            }
+            if(i<0){
+                break;
+            }
+            sum+=nums[i].first;
+            cout << sum << endl;
+            j--;
+        }
+        return sum;
+    }
+};
